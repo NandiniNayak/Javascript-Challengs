@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SetTimeout to delay</title>
+  </head>
+  <body>
+    <script>
+    
+        // Your goal is to create a delay function which uses setTimeout and returns
+        // a Promise. I.e. get the following code working:
+        function delay(seconds){
+          return new Promise((resolve, reject) => {
+            console.log(`I will wait for 1 sec, you asked me to wait for ${seconds} seconds`);
+
+              setTimeout(
+                () => {
+                  resolve(`${seconds} seconds completed`);
+                }, seconds*1000);
+
+              setTimeout(
+                () => {
+                  reject(`one second has passed, you waited too long`);
+                },1000);
+            })
+          }
+
+        delay(1).then( successMessage => {
+          console.log(successMessage);
+        })
+        .catch( errorMessage => {
+          console.log(errorMessage);
+        })
+
+        delay(2).then( successMessage => {
+          console.log(successMessage);
+        })
+        .catch( errorMessage => {
+          console.log(errorMessage);
+        })
+
+    </script>
+  </body>
+</html>

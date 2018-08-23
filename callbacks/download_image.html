@@ -1,0 +1,19 @@
+<html>
+  <head></head>
+  <body>
+    <!-- <a class="button" href="http://www.photo-dictionary.com/photofiles/list/2089/3528kitten.jpg" download="smile.jpg">Download image</a> -->
+
+    <a href="" download>
+      <img src="http://www.photo-dictionary.com/photofiles/list/2089/3528kitten.jpg" alt="W3Schools" width="104" height="142">
+    </a>
+    <script>
+      const code = getWebsite('https://google.com');
+      saveHtml(code, 'index.html');// Error: code is undefined, because getWebsite hasn't finished yet!
+      // const code = getWebsite('https://google.com');
+      // getWebsite('https://google.com', function (code) {
+      //   // This is the callback. It's just a function passed in as an argument
+      //   saveHtml(code);
+      // });
+    </script>
+  </body>
+</html>

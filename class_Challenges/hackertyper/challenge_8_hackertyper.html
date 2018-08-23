@@ -1,0 +1,74 @@
+<!-- 8. Gibberish Generator [HARD] Jquery & JS in HTML (web browser)
+Make a HTML file that will automatically put some random words together whenever the user types. Like Hacker Typer, but with whatever words you want.
+Use this array & add more words to it too: var wordPool = ["test", "word", "random"];
+You may want to use the Jquery "append" function, as well as research how to properly generate a random int (as Math.random makes floats!). -->
+<html>
+    <head>
+        <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+      <style>
+        body{
+          background-color: #000;
+          color: #00FF00;
+        }
+      </style>
+    </head>
+
+  <body>
+    <div id="content"></div>
+    <script>
+      // array of random texts
+      // var randomTextArray = ["test","word","data","random stuff","elephant","monkey","donkey","cat","rabbit"];
+
+      var randomTextArray = [
+          "$(document).keydown( function() {var index = Math.floor((Math.random() * 10) + 1);","var randomData = randomTextArray[index];$( ).append(randomData);","http.get var greet = function(name, msg) { return () => console.log()}","processGeoData();function processGeoData() {let res = data.split(",");console.log(res);}","((welcome) => { return }(hello));","function(foo, bar){ console.log(`${foo} and ${bar}`)}","var greet = function(name, msg) { return () => console.log()}","http.createServer(function(req,res)=> { res.end()}.listen(3000))","var randomData = randomTextArray[index];$(  ).append(randomData);","((welcome) => { return }(hello));"
+        ];
+
+      // generate the cursor image
+      var image = document.createElement("img");
+      image.src = "cursor.gif"
+      image.style.width = "15px";
+      image.style.height = "15px";
+      image.style.backgroundColor = "lime";
+      console.log(image);
+
+      // detect the keypressed to append the new data
+      $(document).keydown( function(event) {
+
+        // insert a line break if key pressed is space(32) or enter(13)
+        if (event.keyCode == 32 || event.keyCode == 13) {
+          // console.log(event.keyCode)
+          $("#content").append("<br>");
+        } else {
+          // generate a random number between 0- array legth
+          var index = getRandomInt(0, randomTextArray.length);
+          // choose a random text from the array, based on the index
+          var randomData = randomTextArray[index];
+          // append the randomly chosed data to the div
+          $("#content").append(randomData);
+        }
+        
+        $("#content").append(image);
+
+      });
+
+       // random index generator based on array length
+      function getRandomInt(min, max) {
+           min = Math.ceil(min);
+           max = Math.floor(max);
+           return Math.floor(Math.random() * (max - min)) + min;
+       }
+    </script>
+  </body>
+</html>
+
+
+<!-- code to be looked into later
+var $newdiv1 = $( "<div id='object1'></div>" ),
+newdiv2 = document.createElement( "div" ),
+existingdiv1 = document.getElementById( "content" );
+
+$("body").append( $newdiv1, [ newdiv2, existingdiv1 ] ); -->

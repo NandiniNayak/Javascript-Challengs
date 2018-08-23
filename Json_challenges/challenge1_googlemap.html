@@ -1,0 +1,57 @@
+<!-- - https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding -->
+<!-- - geolocation of the device: https://jsfiddle.net/3mzq2o8v/4/ -->
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Sydney</title>
+  </head>
+
+  <body onload = "loadMap()">
+    <h2>Sydney</h2>
+    <div id = "map" style = "width:640px; height:480px;"></div>
+      <script>
+        // load sydney map, change the corordinates to display a different location
+      function loadMap() {
+        // Initialize Google Maps
+        const mapOptions = {
+          center:new google.maps.LatLng(-33.865143, 151.209900),
+          zoom: 11
+        }
+        // display the map
+        const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        // fake JSON call
+        function getJSONMarkers() {
+          const markers = [
+            {
+              name:  "Opera House",
+              location: [-33.856159, 151.215256]
+            },
+            {
+              name: "Darling Harbour",
+              location: [-33.87488, 151.2009]
+            },
+            {
+              name: "Ultimo",
+              location: [-33.8688197, 151.2092955]
+            }
+          ];
+          // markers is an array of objects
+          return markers;
+        }
+          // Load JSON Data
+          const hotelMarkers = getJSONMarkers();
+          //
+          // // Initialize Google Markers
+          for(hotel of hotelMarkers) {
+            let marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(hotel.location[0], hotel.location[1]),
+              title: hotel.name
+            })
+          }
+        }
+      </script>
+      <script src = "https://maps.googleapis.com/maps/api/js"></script>
+  </body>
+</html>
